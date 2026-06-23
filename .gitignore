@@ -1,2 +1,6 @@
+# Cloudflare worker
 .wrangler/
 node_modules/
+
+# OAI-PMH
+*.xml

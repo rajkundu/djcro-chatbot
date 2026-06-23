@@ -54,6 +54,7 @@
   .t-plastics { background: #e0f2f1; color: #00695c; }
   .t-trauma { background: #fbe9e7; color: #bf360c; }
   .t-peds { background: #e8eaf6; color: #283593; }
+  .t-oncology { background: #fffde7; color: #f57f17; }
   .t-other { background: #f5f5f5; color: #555; }
 
   /* ── Chat ── */
@@ -84,9 +85,6 @@
   #send { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-dark); border: none; cursor: pointer; color: white; font-size: 16px; flex-shrink: 0; }
   #send:hover { background: var(--blue-mid); }
   #send:disabled { opacity: 0.4; cursor: not-allowed; }
-  #sync-btn { padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text2); font-size: 12px; cursor: pointer; flex-shrink: 0; }
-  #sync-btn:hover { background: #e9ecef; }
-  #sync-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
   /* ── Modal ── */
   #modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: center; justify-content: center; }
@@ -95,6 +93,7 @@
   #modal h2 { font-size: 15px; margin-bottom: 4px; }
   #modal .meta { font-size: 12px; color: var(--text2); margin-bottom: 12px; }
   #modal .authors { font-size: 13px; margin-bottom: 8px; }
+  #modal .link a { font-size: 12px; color: var(--blue-mid); }
   #modal .doi a { font-size: 12px; color: var(--blue-mid); }
   #modal-close { float: right; background: none; border: none; font-size: 18px; cursor: pointer; color: var(--text2); margin-top: -4px; }
 </style>
@@ -103,7 +102,7 @@
 
 <div id="header">
   <div class="logo" style="background:none;border:none;padding:2px;overflow:hidden;border-radius:6px;display:flex;align-items:center;justify-content:center">
-    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAMAB4ADASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAcIBQYJBAMCAf/EAFoQAAEDAwEDBA4GBQcJCAEFAQABAgMEBQYRBwghEjFBkRMWFyI3UVVWYXGBk7LRFHN0obHBFSMyNkIzNFJydYLSJDU4Q1NikrPCGFdjg5Si4fAlREVU4/Gj/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAQGAwUHAQL/xAA7EQEAAQMBAwkHAwUAAwEBAQEAAQIDBBEFFiESMUFRUnGRobEGEzM0U2GBIjLRFELB4fAVI3JDgiTx/9oADAMBAAIRAxEAPwCHwAdQcxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" alt="DJCRO Logo" style="height:36px;width:auto;object-fit:contain" />
+    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAMAB4ADASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAcIBQYJBAMCAf/EAFoQAAEDAwEDBA4GBQcJCAEFAQABAgMEBQYRBwghEjFBkRMWFyI3UVVWYXGBk7LRFHN0obHBFSMyNkIzNFJydYLSJDU4Q1NikrPCGFdjg5Si4fAlREVU4/Gj/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAQGAwUHAQL/xAA7EQEAAQMBAwkHAwUAAwEBAQEAAQIDBBEFFiESMUFRUnGRobEGEzM0U2GBIjLRFELB4fAVI3JDgiTx/9oAMBAAIRAxEAPwCHwAdQcxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" alt="DJCRO Logo" style="height:36px;width:auto;object-fit:contain" />
   </div>
   <div>
     <div class="title">DJCRO Research Assistant</div>
@@ -113,16 +112,16 @@
 </div>
 
 <div id="stats">
-  <div class="stat">📄 <strong id="st-total">36</strong> case reports</div>
-  <div class="stat">👥 <strong id="st-auth">–</strong> authors</div>
-  <div class="stat">🏷 <strong id="st-topics">8</strong> topics</div>
-  <div class="stat">📅 Fall 2023 – Spring 2026</div>
+  <div class="stat">📄 <strong id="st-total">0</strong> case reports</div>
+  <div class="stat">👥 <strong id="st-auth">0</strong> authors</div>
+  <div class="stat">🏷 <strong id="st-topics">0</strong> topics</div>
+  <div class="stat">📅 <span id="st-range">Loading...</span></div>
   <div class="stat">🔗 <a href="https://dukeeyecenter.duke.edu/digital-journal-case-reports-ophthalmology" target="_blank">Access DJCRO ↗</a></div>
 </div>
 
 <div id="main">
   <div id="sidebar">
-    <h3>All Case Reports (<span id="art-count">36</span>)</h3>
+    <h3>All Case Reports (<span id="art-count">0</span>)</h3>
     <div id="article-list"></div>
   </div>
 
@@ -138,7 +137,6 @@
       <button class="sug" onclick="qs(this)">Which authors worked together most?</button>
     </div>
     <div id="input-bar">
-      <button id="sync-btn" onclick="syncLatest()">🔄 Sync latest</button>
       <textarea id="inp" placeholder="Ask about DJCRO case reports…" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
       <button id="send" onclick="send()">↑</button>
     </div>
@@ -153,63 +151,24 @@
 </div>
 
 <script>
-// ── Knowledge base ──────────────────────────────────────────────────────────
-const RAW = [
-  {id:71,title:"Pseudomonas Stutzeri Endogenous Endophthalmitis and Sequential Giant Retinal Tear Management",authors:["Ashraya Nayaka T E","Kalaivani Jayakumar"],date:"2026-04",topic:"Retina",volume:"Spring 2026",doi:"10.62856/djcro.v10.71"},
-  {id:72,title:"Subretinal Fluid Overlying a Drusenoid Pigment Epithelial Detachment in an Eye with Dry Age-related Macular Degeneration",authors:["Paola Saboya-Galindo","Naveen Karthik","Sharon Fekrat"],date:"2026-04",topic:"Retina",volume:"Spring 2026",doi:"10.62856/djcro.v10.72"},
-  {id:66,title:"Ab Externo Complete Glaucoma Drainage Device Occlusion with Bulbed Polypropylene Suture",authors:["Daniel L. Liebman","Cormac H. Nolan","Michael M. Lin"],date:"2026-04",topic:"Glaucoma",volume:"Spring 2026",doi:"10.62856/djcro.v10.66"},
-  {id:80,title:"Approaches to Low Vision Care in Patients with Uveal Coloboma: An African Perspective",authors:["Sunkanmi Arogbokun","Beth Barstow"],date:"2026-04",topic:"Neuro-Ophthalmology & Low Vision",volume:"Spring 2026",doi:"10.62856/djcro.v10.80"},
-  {id:77,title:"Ellipsoid Zone Loss as a Retinal Complication after Chimeric Antigen Receptor T-Cell Therapy",authors:["Eliana-Ruobing Zhang","David E. Lederer"],date:"2026-03",topic:"Retina",volume:"Spring 2026",doi:"10.62856/djcro.v10.77"},
-  {id:69,title:"Severe Unilateral Hypopyon Uveitis Secondary to Zoledronate Infusion Masquerading as Endophthalmitis",authors:["Brian T. Cheng","Sidra Zafar","Bryce P. Hwang","Martin Calotti","Julie S. Kim","Theodore Bowe","Flavius A. Beca","Sonia Mehta","James P. Dunn","Sunir J. Garg","Jordan D. Deaner"],date:"2026-02",topic:"Uveitis / Ocular Inflammation",volume:"Spring 2026",doi:"10.62856/djcro.v10.69"},
-  {id:67,title:"Resistant Serpiginous Choroiditis Successfully Treated with Oral Chlorambucil and Intravitreal Bevacizumab Injections",authors:["Jillene Moxam","Khushi Saigal","Shawn Khan","Arash Maleki"],date:"2025-11",topic:"Uveitis / Ocular Inflammation",volume:"Fall 2025",doi:"10.62856/djcro.v9.67"},
-  {id:63,title:"Corneal Keloid",authors:["Manusree Bhatter","Christian Robertson","Lai Jiang"],date:"2025-10",topic:"Cornea & External Disease",volume:"Fall 2025",doi:"10.62856/djcro.v9.63"},
-  {id:58,title:"Successful Closure of a Recurrent Full-Thickness Macular Hole with Medical Therapy",authors:["Jenna R Vroman","Arman Farr","Dilraj S Grewal"],date:"2025-09",topic:"Retina",volume:"Summer 2025",doi:"10.62856/djcro.v8.58"},
-  {id:55,title:"Cyclosporine as Postoperative Immunomodulating Agent in Penetrating Keratoplasty for Keratomycosis: A Case Series",authors:["Esteban Peralta","Chris Kim","James Tian","Syed Ali Ahmed","Alan Carlson","Lloyd Williams"],date:"2025-09",topic:"Cornea & External Disease",volume:"Summer 2025",doi:"10.62856/djcro.v8.55"},
-  {id:53,title:"Delayed Suprachoroidal Hemorrhage During Anterior Chamber Decompression One Day Following Tube Shunt Implantation",authors:["Mohit Jethi","Asher Weiner"],date:"2025-08",topic:"Glaucoma",volume:"Summer 2025",doi:"10.62856/djcro.v8.53"},
-  {id:56,title:"Dissecting Trabeculectomy Filtering Bleb Masquerading as Ocular Surface Squamous Neoplasia",authors:["Esteban A. Peralta","Arpita S. Maniar","Alan D. Proia","Syed A. Ahmed","Miguel A. Materin"],date:"2025-08",topic:"Glaucoma",volume:"Summer 2025",doi:"10.62856/djcro.v8.56"},
-  {id:49,title:"HLA-B27 Positive Juvenile Idiopathic Arthritis Associated Uveitis Presenting with an Acute Onset and a Chronic Course",authors:["Arash Maleki"],date:"2025-07",topic:"Uveitis / Ocular Inflammation",volume:"Summer 2025",doi:"10.62856/djcro.v8.49"},
-  {id:48,title:"Unilateral Serous Macular Detachment Accompanying Cystoid Macular Edema After COVID-19 Vaccination",authors:["Navid Elmi Sadr","Ramyar Hariri"],date:"2025-06",topic:"Retina",volume:"Spring 2025",doi:"10.62856/djcro.v7.48"},
-  {id:47,title:"Posterior Scleritis with Optic Nerve Edema Presenting in a Case of Atypical Cogan's Syndrome",authors:["Layla Mazdeyasnan","Zian Shabbir","Gregory Lewis"],date:"2025-05",topic:"Uveitis / Ocular Inflammation",volume:"Spring 2025",doi:"10.62856/djcro.v7.47"},
-  {id:45,title:"Juvenile Idiopathic Arthritis with Anterior Uveitis and Vasculitis",authors:["Ayesha A. Nasir","Melis Kabaalioglu Guner","Mehmet Eren Guner"],date:"2025-04",topic:"Uveitis / Ocular Inflammation",volume:"Spring 2025",doi:"10.62856/djcro.v7.45"},
-  {id:39,title:"Multimodal Imaging of Punctate Outer Retinal Toxoplasmosis",authors:["Rachel A. Donaldson","Aaron Lindeke-Myers","Daniel Apple","Ramiro S. Maldonado"],date:"2025-04",topic:"Retina",volume:"Spring 2025",doi:"10.62856/djcro.v7.39"},
-  {id:33,title:"Anterior Vitreous Migration After 0.1cc Intravitreal Injection",authors:["Richard A. Morgan","Peter Weng","Esteban Peralta","Nita Valikodath","Sharon Fekrat"],date:"2025-03",topic:"Retina",volume:"Spring 2025",doi:"10.62856/djcro.v7.33"},
-  {id:41,title:"Delayed Onset Corneal Edema Following Selective Laser Trabeculoplasty",authors:["Devin Leung","Sonia Nezami","Christos C. Theophanous"],date:"2025-03",topic:"Glaucoma",volume:"Winter 2025",doi:"10.62856/djcro.v6.41"},
-  {id:40,title:"Post Traumatic Lamellar Corneal Laceration Repair Using Shaped SMILE Lenticule",authors:["Vijay K Sharma","Prabhjot Singh","Ashok K Sharma","Guru Tegginakerimath","Srishti Khullar"],date:"2025-01",topic:"Cornea & External Disease",volume:"Winter 2025",doi:"10.62856/djcro.v6.40"},
-  {id:36,title:"Endogenous Endophthalmitis Caused by Granulicatella adiacens",authors:["Janiece L. Rosado","Melissa Yuan","Dan A. Gong"],date:"2024-11",topic:"Uveitis / Ocular Inflammation",volume:"Fall 2024",doi:"10.62856/djcro.v5.36"},
-  {id:9, title:"An Unknown Pregnancy Presenting as Vision Loss",authors:["Gulrukh Shaheen","Vincent Tang","Kevin Sitko","Alice Yang Zhang"],date:"2024-11",topic:"Neuro-Ophthalmology & Low Vision",volume:"Fall 2024",doi:"10.62856/djcro.v5.9"},
-  {id:29,title:"Symptomatic Foveal Impingement following Posterior Vitreous Detachment Formation",authors:["Denizcan Özizmirliler","Ali Osman Saatci"],date:"2024-10",topic:"Retina",volume:"Fall 2024",doi:"10.62856/djcro.v5.29"},
-  {id:23,title:"Progression of Pentosan Polysulfate Sodium Maculopathy following Discontinuation",authors:["Joshua Woo","Mustafa Iftikhar","Sharon Fekrat"],date:"2024-09",topic:"Retina",volume:"Fall 2024",doi:"10.62856/djcro.v5.23"},
-  {id:28,title:"Occult Nonmetallic Intraocular Foreign Body",authors:["Syed Zafar","Mandeep Lamba","Diljeet Gahir","Haya Qasem"],date:"2024-09",topic:"Ocular Trauma",volume:"Fall 2024",doi:"10.62856/djcro.v5.28"},
-  {id:26,title:"The Use of Tocilizumab to Treat Recurrent Thyroid Eye Disease Previously Treated with Teprotumumab",authors:["Naomi C Pang","Adam S Hassan"],date:"2024-08",topic:"Oculoplastics & Orbit",volume:"Summer 2024",doi:"10.62856/djcro.v4.26"},
-  {id:34,title:"Infiltrative Optic Neuropathy in Acute Lymphoblastic Leukemia with Negative Bone Marrow Biopsy",authors:["Duriye Damla Sevgi","Kathy Dong","Victoria Miller","Denis Jusufbegovic"],date:"2024-08",topic:"Neuro-Ophthalmology & Low Vision",volume:"Summer 2024",doi:"10.62856/djcro.v4.34"},
-  {id:17,title:"Retinopathy In A Patient With Influenza Associated Pancytopenia",authors:["Simran Ohri","Alice Yang Zhang"],date:"2024-07",topic:"Retina",volume:"Summer 2024",doi:"10.62856/djcro.v4.17"},
-  {id:13,title:"Severe Vitamin A Deficiency and Xerophthalmia Leading to Corneal Perforation",authors:["Riya Shah","Jae Kim","Joshua Barbosa","Patrick SY Lee","Mark McDermott"],date:"2024-06",topic:"Cornea & External Disease",volume:"Summer 2024",doi:"10.62856/djcro.v4.13"},
-  {id:24,title:"Inherited Retinal Degenerations Masquerading as Age-related Macular Degeneration in Older Adults",authors:["Kirk AJ Stephenson","Andrew W Kirker","Cheryl Y Gregory-Evans","Kevin Gregory-Evans","Kaivon Pakzad-Vaezi"],date:"2024-05",topic:"Retina",volume:"Spring 2024",doi:"10.62856/djcro.v3.24"},
-  {id:14,title:"Tolosa Hunt Syndrome: An Atypical Presentation of a Rare Condition",authors:["Jason Zehden","Basil Mathews","Maja Kostic"],date:"2024-04",topic:"Neuro-Ophthalmology & Low Vision",volume:"Spring 2024",doi:"10.62856/djcro.v3.14"},
-  {id:12,title:"Optimal Illumination: The BFF Light",authors:["Justin P. Ma","Frank L. Brodie","Disha Jotsinghani","Lucas McNeill","Sharon Fekrat"],date:"2024-04",topic:"Retina",volume:"Spring 2024",doi:"10.62856/djcro.v3.12"},
-  {id:21,title:"Replantation of Avulsed Eyelid Followed by Use of Bioengineered Dermal Substitute",authors:["Anagha Medsinge","Amy M. Fowler"],date:"2024-04",topic:"Oculoplastics & Orbit",volume:"Spring 2024",doi:"10.62856/djcro.v3.21"},
-  {id:18,title:"Dramatic Hemorrhagic Papilledema After Surgical Resection of Meningioma",authors:["See Ye King","Chin Chee Fang","Li Zhenghao Kelvin"],date:"2024-03",topic:"Neuro-Ophthalmology & Low Vision",volume:"Spring 2024",doi:"10.62856/djcro.v3.18"},
-  {id:19,title:"Spontaneous Peeling of an Epiretinal Membrane in an Eye with Treated Proliferative Diabetic Retinopathy",authors:["Ananth Sastry","C. Ellis Wisely","Sejal Patel","Lucas McNeill","Sharon Fekrat"],date:"2024-02",topic:"Winter 2024",doi:"10.62856/djcro.v2.19"},
-  {id:8, title:"Multimodal Imaging and Follow-Up of a Nodule Arising from Congenital Hypertrophy of the Retinal Pigment Epithelium",authors:["Victor C. F. Bellanda","Arpita S. Maniar","Miguel A. Materin"],date:"2023-11",topic:"Retina",volume:"Fall 2023",doi:"10.62856/djcro.v1.8"}
-];
-
-let KB = [...RAW];
-let busy = false;
-
 // ── Secure Backend Proxy URL ─────────────────────────────────────────────────
-// Points to your Cloudflare Worker so API keys are completely hidden
 const WORKER_URL = "https://djcro-chatbot-proxy.rjk368.workers.dev";
 
-// ── Topic CSS class ──────────────────────────────────────────────────────────
+let KB = [];
+let busy = false;
+
+// ── Topic CSS class mapping ──────────────────────────────────────────────────
 function topicClass(t) {
-  if (t.includes("Retina")) return "t-retina";
-  if (t.includes("Cornea")) return "t-cornea";
-  if (t.includes("Glaucoma")) return "t-glaucoma";
-  if (t.includes("Uveitis")) return "t-uveitis";
-  if (t.includes("Neuro")) return "t-neuro";
-  if (t.includes("Oculoplastic")) return "t-plastics";
-  if (t.includes("Trauma")) return "t-trauma";
-  if (t.includes("Pediatric")) return "t-peds";
+  const l = t.toLowerCase();
+  if (l.includes("retina")) return "t-retina";
+  if (l.includes("cornea") || l.includes("cataract") || l.includes("refractive")) return "t-cornea";
+  if (l.includes("glaucoma")) return "t-glaucoma";
+  if (l.includes("uveitis")) return "t-uveitis";
+  if (l.includes("neuro")) return "t-neuro";
+  if (l.includes("plastic")) return "t-plastics";
+  if (l.includes("trauma")) return "t-trauma";
+  if (l.includes("pediatric") || l.includes("strabismus")) return "t-peds";
+  if (l.includes("oncology")) return "t-oncology";
   return "t-other";
 }
 
@@ -220,8 +179,12 @@ function renderSidebar() {
   [...KB].sort((a,b) => b.date.localeCompare(a.date)).forEach(r => {
     const d = document.createElement("div");
     d.className = "art-item";
+    
+    // Format Sidebar Date strictly as YYYY-MM
+    const displayDate = r.date.length >= 7 ? r.date.substring(0, 7) : r.date;
+    
     d.innerHTML = `<div class="art-title">${r.title}</div>
-      <div class="art-meta">${r.date} · ${r.volume}</div>
+      <div class="art-meta">${displayDate} &bull; ${r.volume}</div>
       <span class="topic-badge ${topicClass(r.topic)}">${r.topic}</span>`;
     d.onclick = () => showModal(r);
     list.appendChild(d);
@@ -232,9 +195,14 @@ function renderSidebar() {
 // ── Update stats ─────────────────────────────────────────────────────────────
 function updateStats() {
   const auths = new Set();
-  KB.forEach(r => r.authors.forEach(a => auths.add(a)));
+  const topics = new Set();
+  KB.forEach(r => {
+    r.authors.forEach(a => auths.add(a));
+    if (r.topic && r.topic !== "Other") topics.add(r.topic);
+  });
   document.getElementById("st-total").textContent = KB.length;
   document.getElementById("st-auth").textContent = auths.size;
+  document.getElementById("st-topics").textContent = topics.size;
 }
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
@@ -242,8 +210,9 @@ function showModal(r) {
   document.getElementById("modal-content").innerHTML = `
     <span class="topic-badge ${topicClass(r.topic)}" style="font-size:11px">${r.topic}</span>
     <h2 style="margin-top:8px">${r.title}</h2>
-    <div class="meta">${r.volume} · Published ${r.date}</div>
+    <div class="meta">${r.volume} &bull; Published ${r.date}</div>
     <div class="authors"><strong>Authors:</strong> ${r.authors.join(", ")}</div>
+    <div class="link"><strong>Link:</strong> <a href="https://djcro.duke.edu/index.php/djcro/article/view/${r.id}" target="_blank">View Article ↗</a></div>
     <div class="doi"><strong>DOI:</strong> <a href="https://doi.org/${r.doi}" target="_blank">${r.doi} ↗</a></div>
   `;
   document.getElementById("modal-overlay").classList.add("open");
@@ -271,23 +240,23 @@ function buildContext(question) {
   let pool = [...KB].sort((a,b)=>b.date.localeCompare(a.date));
   if (!isAgg) {
     const scored = pool.map(r => {
-      const hay = (r.title+" "+r.authors.join(" ")+" "+r.topic).toLowerCase();
+      const hay = (r.title+" "+r.authors.join(" ")+" "+r.topic+" "+r.abstract).toLowerCase();
       return { r, s: qWords.reduce((n,w)=>n+(hay.includes(w)?1:0),0) };
     }).sort((a,b)=>b.s-a.s);
     const hits = scored.filter(x=>x.s>0).map(x=>x.r);
     pool = hits.length >= 3 ? hits.slice(0,15) : scored.slice(0,15).map(x=>x.r);
   }
 
-  const lines = pool.map(r=>`${r.date} | ${r.topic} | ${r.authors.join(", ")} | ${r.title}`).join("\n");
+  const lines = pool.map(r=>`${r.date} | ${r.topic} | ${r.authors.join(", ")} | ${r.title} | Abstract: ${r.abstract}`).join("\n");
   const note = pool.length < KB.length ? ` (top ${pool.length} of ${KB.length} by relevance)` : ` (all ${KB.length})`;
-  return `DJCRO ${KB.length} reports Fall2023-Spring2026\nTOPICS: ${topicLine}\nAUTHORS: ${authorLine}\nARTICLES${note}:\n${lines}`;
+  return `DJCRO ${KB.length} reports\nTOPICS: ${topicLine}\nAUTHORS: ${authorLine}\nARTICLES${note}:\n${lines}`;
 }
 
 // ── Chat helpers ──────────────────────────────────────────────────────────────
 function addBotMsg(html) {
   const d = document.createElement("div");
   d.className = "msg bot";
-  d.innerHTML = `<div class="av" style="background:none;border:none;padding:0;overflow:hidden"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAMAB4ADASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAcIBQYJBAMCAf/EAFoQAAEDAwEDBA4GBQcJCAEFAQABAgMEBQYRBwghEjFBkRMWFyI3UVVWYXGBk7LRFHN0obHBFSMyNkIzNFJydYLSJDU4Q1NikrPCGFdjg5Si4fAlREVU4/Gj/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAQGAwUHAQL/xAA7EQEAAQMBAwkHAwUAAwEBAQEAAQIDBBEFFiESMUFRUnGRobEGEzM0U2GBIjLRFELB4fAVI3JDgiTx/9oADAMBAAIRAxEAPwCHwAdQcxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" alt="DJCRO" style="width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%" /></div><div class="bubble">${html}</div>`;
+  d.innerHTML = `<div class="av" style="background:none;border:none;padding:0;overflow:hidden"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAMAB4ADASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAcIBQYJBAMCAf/EAFoQAAEDAwEDBA4GBQcJCAEFAQABAgMEBQYRBwghEjFBkRMWFyI3UVVWYXGBk7LRFHN0obHBFSMyNkIzNFJydYLSJDU4Q1NikrPCGFdjg5Si4fAlREVU4/Gj/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAQGAwUHAQL/xAA7EQEAAQMBAwkHAwUAAwEBAQEAAQIDBBEFFiESMUFRUnGRobEGEzM0U2GBIjLRFELB4fAVI3JDgiTx/9oAMBAAIRAxEAPwCHwAdQcxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9k=" alt="DJCRO" style="width:100%;height:100%;object-fit:cover;object-position:center;border-radius:50%" /></div><div class="bubble">${html}</div>`;
   document.getElementById("messages").appendChild(d);
   document.getElementById("messages").scrollTop = 9999;
   return d;
@@ -317,14 +286,13 @@ async function send() {
   busy = true; document.getElementById("send").disabled = true;
   showTyping();
   const startTime = Date.now();
+  
   try {
     const res = await fetch(WORKER_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "claude-sonnet-4-5", // overwritten by cloudflare worker proxy anyways for security
+        model: "claude-sonnet-4-6",
         max_tokens: 1000,
         system: `You are a research assistant for the Digital Journal of Case Reports in Ophthalmology (DJCRO), published by Duke Eye Center. Answer questions ONLY using the knowledge base provided. Be concise and cite specific numbers, titles, or author names from the data. If the answer cannot be determined from the data, respond with exactly: "This information is not contained in DJCRO material." Do not speculate.\n\n${buildContext(q)}`,
         messages: [{ role: "user", content: q }]
@@ -350,63 +318,208 @@ async function send() {
   busy = false; document.getElementById("send").disabled = false;
 }
 
-// ── Sync latest via Worker Proxy ──────────────────────────────────────────────
-async function syncLatest() {
+// ── Master Database Loader ──────────────────────────────────────────────────
+async function loadDatabase() {
   if (busy) return;
-  const btn = document.getElementById("sync-btn");
-  btn.disabled = true; btn.textContent = "⏳ Syncing…";
-  busy = true; document.getElementById("send").disabled = true;
-  addBotMsg("Checking the DJCRO website for new publications…");
+  
+  busy = true; 
+  document.getElementById("send").disabled = true;
+  document.getElementById("inp").disabled = true;
+  const startTime = Date.now();
   showTyping();
-  try {
-    const res = await fetch(WORKER_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "cf-aig-skip-cache": "true" // NOTE: bypasses Cloudflare AI gateway caching (if enabled) to ensure data is actually pulled on each sync request
-      },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6", // overwritten by cloudflare worker proxy anyways for security
-        max_tokens: 2000,
-        tools: [{ type: "web_search_20250305", name: "web_search" }],
-        messages: [{
-          role: "user",
-          content: `Search for new case reports on the DJCRO page at https://dukeeyecenter.duke.edu/digital-journal-case-reports-ophthalmology. I already have these article IDs: ${KB.map(r=>r.id).join(", ")}. Return ONLY a JSON array of any new articles not in that list (empty array [] if none found). Format: [{"id":NUMBER,"title":"...","authors":["..."],"date":"YYYY-MM","topic":"...","volume":"...","doi":"..."}]. Topic must be one of: Retina, Cornea & External Disease, Glaucoma, Uveitis / Ocular Inflammation, Neuro-Ophthalmology & Low Vision, Oculoplastics & Orbit, Ocular Trauma, Pediatric Ophthalmology, Other. Respond ONLY with the raw JSON array, no markdown.`
-        }]
-      })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error.message || data.error);
-    const txt = (data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("\n");
 
-    let newArts = [];
-    const stripped = txt.replace(/```[\w]*\n?/g,"").trim();
-    const si = stripped.indexOf("["), ei = stripped.lastIndexOf("]");
-    if (si > -1 && ei > si) {
-      try { newArts = JSON.parse(stripped.slice(si, ei+1)); } catch(_) { newArts = []; }
+  try {
+    let dataSource = "Unknown";
+    const isTestingOffline = false; // Set to true to test the KV Backup System safely
+    const fetchHeaders = { "Content-Type": "application/json" };
+    if (isTestingOffline) fetchHeaders["x-simulate-offline"] = "true";
+
+    // 1. Fetch and build the Topics mapping via ListSets
+    const setMap = {};
+    try {
+      const setResponse = await fetch(WORKER_URL, {
+        method: "POST", headers: fetchHeaders,
+        body: JSON.stringify({ proxy_url: "https://djcro.duke.edu/index.php/djcro/oai?verb=ListSets" })
+      });
+      if (setResponse.ok) {
+        const setText = await setResponse.text();
+        const setDoc = new DOMParser().parseFromString(setText, "text/xml");
+        const setNodes = setDoc.getElementsByTagName("set");
+        for (let i = 0; i < setNodes.length; i++) {
+           const spec = setNodes[i].querySelector("setSpec")?.textContent;
+           const name = setNodes[i].querySelector("setName")?.textContent;
+           if (spec && name) setMap[spec] = name;
+        }
+      }
+    } catch (err) {
+      console.warn("Failed to load ListSets mapped topics", err);
     }
 
-    rmTyping();
-    if (!Array.isArray(newArts) || newArts.length === 0) {
-      addBotMsg("Library is up to date — no new publications found beyond the current <strong>" + KB.length + " indexed reports</strong>.");
-    } else {
-      const existingIds = new Set(KB.map(r=>r.id));
-      const fresh = newArts.filter(r => r.id && !existingIds.has(r.id));
-      if (fresh.length === 0) {
-        addBotMsg("Library is up to date — no new publications found beyond the current <strong>" + KB.length + " indexed reports</strong>.");
+    // 2. Fetch the entire Article Database via ListRecords
+    let allArticles = [];
+    let hasMorePages = true;
+    let targetUrl = "https://djcro.duke.edu/index.php/djcro/oai?verb=ListRecords&metadataPrefix=oai_dc";
+
+    while (hasMorePages) {
+      const response = await fetch(WORKER_URL, {
+        method: "POST", headers: fetchHeaders,
+        body: JSON.stringify({ proxy_url: targetUrl }) 
+      });
+
+      if (response.headers.has("X-Data-Source")) {
+        dataSource = response.headers.get("X-Data-Source");
+      }
+
+      if (!response.ok) throw new Error(`Server returned status ${response.status}`);
+      
+      const xmlText = await response.text();
+      const xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
+
+      const oaiError = xmlDoc.querySelector("error");
+      if (oaiError) {
+        if (oaiError.getAttribute("code") === "noRecordsMatch") break;
+        throw new Error(oaiError.textContent || oaiError.getAttribute("code"));
+      }
+
+      const records = xmlDoc.getElementsByTagName("record");
+      for (let i = 0; i < records.length; i++) {
+        const metadata = records[i].getElementsByTagName("metadata")[0];
+        if (!metadata) continue;
+
+        const dc = metadata.firstElementChild; 
+        if (!dc) continue;
+
+        const identifiers = Array.from(dc.getElementsByTagName("dc:identifier")).map(el => el.textContent);
+        let id = null;
+        let doi = "";
+        
+        identifiers.forEach(str => {
+          if (str.includes("/article/view/")) {
+            const parts = str.split("/");
+            id = parseInt(parts[parts.length - 1], 10);
+          } else if (str.startsWith("10.") || str.includes("doi.org")) {
+            doi = str.replace(/.*doi\.org\//, "");
+          }
+        });
+
+        if (!id) continue;
+
+        const titleEl = dc.getElementsByTagName("dc:title")[0];
+        const title = titleEl ? titleEl.textContent : "Untitled Case Report";
+
+        const authors = Array.from(dc.getElementsByTagName("dc:creator")).map(el => el.textContent.trim());
+
+        const dateEl = dc.getElementsByTagName("dc:date")[0];
+        const date = dateEl ? dateEl.textContent.trim() : "Unknown Date";
+
+        // Assign Topic precisely from the <setSpec> academic tags instead of <dc:subject>
+        let topic = "Other";
+        const headerEl = records[i].getElementsByTagName("header")[0];
+        if (headerEl) {
+          const setSpecs = Array.from(headerEl.getElementsByTagName("setSpec")).map(el => el.textContent);
+          const specificSet = setSpecs.find(s => s !== "djcro"); // Filter out the master journal set
+          if (specificSet && setMap[specificSet]) {
+            topic = setMap[specificSet];
+          }
+        }
+
+        // --- EXTRACT VOLUME AND SEASON ---
+        const sourceEl = dc.getElementsByTagName("dc:source")[0];
+        const rawSource = sourceEl ? sourceEl.textContent : "";
+        let volumeDisplay = "Recent Publication";
+
+        const seasonMatch = rawSource.match(/(Spring|Summer|Fall|Winter)\s+\d{4}/i);
+        const season = seasonMatch ? seasonMatch[0] : "";
+
+        let volNumStr = "";
+        const volMatch = rawSource.match(/Vol(?:ume)?\.?\s*(\d+)/i);
+        if (volMatch) {
+          volNumStr = volMatch[1];
+        } else if (doi) {
+          // Fallback extraction directly from the DOI structure!
+          const doiVolMatch = doi.match(/\.v(\d+)\./i);
+          if (doiVolMatch) volNumStr = doiVolMatch[1];
+        }
+
+        if (volNumStr && season) {
+          volumeDisplay = `Vol. ${volNumStr} (${season})`;
+        } else if (season) {
+          volumeDisplay = season;
+        } else if (volNumStr) {
+          volumeDisplay = `Vol. ${volNumStr}`;
+        } else if (rawSource) {
+          volumeDisplay = rawSource; 
+        }
+
+        const volNum = parseInt(volNumStr, 10);
+
+        const descEl = dc.getElementsByTagName("dc:description")[0];
+        const abstract = descEl ? descEl.textContent.trim() : "";
+
+        allArticles.push({ id, title, authors, date, topic, volume: volumeDisplay, season, volNum, doi, abstract });
+      }
+
+      const tokenEl = xmlDoc.getElementsByTagName("resumptionToken")[0];
+      if (tokenEl && tokenEl.textContent.trim()) {
+        const token = tokenEl.textContent.trim();
+        targetUrl = `https://djcro.duke.edu/index.php/djcro/oai?verb=ListRecords&resumptionToken=${token}`;
       } else {
-        KB = [...KB, ...fresh];
-        updateStats(); renderSidebar();
-        addBotMsg("<strong>" + fresh.length + " new report" + (fresh.length>1?"s":"") + " added!</strong><br><br>" +
-          fresh.map(r=>"• <em>" + r.title + "</em> (" + r.date + ")").join("<br>"));
+        hasMorePages = false;
       }
     }
-  } catch(e) {
+
+    KB = allArticles;
+    
+    // 3. Dynamically Calculate Volume Range for Welcome Message using Volume Numbers
+    let oldestVol = "";
+    let newestVol = "";
+    if (KB.length > 0) {
+      // Filter out items without a valid volume number, then sort by volume number chronologically
+      const sortedByVol = [...KB]
+        .filter(a => !isNaN(a.volNum))
+        .sort((a, b) => a.volNum - b.volNum);
+
+      if (sortedByVol.length > 0) {
+        const oldest = sortedByVol[0];
+        const newest = sortedByVol[sortedByVol.length - 1];
+        // Display the season in the welcome message/stats (e.g. "Fall 2023")
+        oldestVol = oldest.season || oldest.volume;
+        newestVol = newest.season || newest.volume;
+      } else {
+        // Fallback: sort by date if no volume numbers exist
+        const sortedByDate = [...KB].sort((a,b) => a.date.localeCompare(b.date));
+        oldestVol = sortedByDate[0].season || sortedByDate[0].volume;
+        newestVol = sortedByDate[sortedByDate.length - 1].season || sortedByDate[sortedByDate.length - 1].volume;
+      }
+      
+      const rangeText = (oldestVol === newestVol) ? oldestVol : `${oldestVol} \u2013 ${newestVol}`;
+      document.getElementById("st-range").textContent = rangeText;
+    }
+    
+    updateStats(); 
+    renderSidebar();
+
+    const elapsed = Date.now() - startTime;
+    const minDelayMs = 1000;
+    if (elapsed < minDelayMs) {
+      await new Promise(resolve => setTimeout(resolve, minDelayMs - elapsed));
+    }
     rmTyping();
-    addBotMsg("<span style=\"color:#dc3545\">Sync failed: " + e.message + "</span>");
+    
+    const rangeSentence = (oldestVol && newestVol && oldestVol !== newestVol) 
+      ? `indexed from <strong>${oldestVol} through ${newestVol}</strong>`
+      : `indexed from <strong>${oldestVol}</strong>`;
+
+    addBotMsg(`Welcome! I have <strong>${KB.length} DJCRO case reports</strong> ${rangeSentence}. <br><br>Click an article in the sidebar to view its details or ask a question to search the library.`);
+
+  } catch (e) {
+    rmTyping();
+    addBotMsg("<span style=\"color:#dc3545\">Database load failed: " + e.message + "</span>");
   }
-  busy = false; document.getElementById("send").disabled = false;
-  btn.disabled = false; btn.textContent = "🔄 Sync latest";
+
+  busy = false; 
+  document.getElementById("send").disabled = false;
+  document.getElementById("inp").disabled = false;
 }
 
 function qs(btn) { document.getElementById("inp").value = btn.textContent; send(); }
@@ -414,9 +527,7 @@ function hk(e) { if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send();} }
 function ar(el) { el.style.height="auto"; el.style.height=Math.min(el.scrollHeight,100)+"px"; }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-updateStats();
-renderSidebar();
-addBotMsg(`Welcome! I have <strong>${KB.length} DJCRO case reports</strong> indexed from <strong>Fall 2023 through Spring 2026</strong>. Click an article in the sidebar to view its details or ask a question to search the library.`);
+loadDatabase();
 </script>
 </body>
 </html>
