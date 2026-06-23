@@ -1,0 +1,23 @@
+{
+  "name": "djcro-chatbot-proxy",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-06-23",
+  "kv_namespaces": [
+    {
+      "binding": "DJCRO_BACKUP",
+      "id": "a0e92d9a53f44db5bff789f3cd58a4a3"
+    }
+  ],
+
+  "vars": {
+    "ALLOWED_CORS_ORIGIN": "*",
+    "CF_GATEWAY_ID": "djcro-gateway",
+    "CF_AIG_BYOK_ALIAS": "testing",
+
+    "HEADER_PASSTHROUGH_WHITELIST": ["cf-aig-skip-cache"],
+
+    "CF_AIG_PROVIDER": "anthropic",
+    "MODEL_STR": "claude-sonnet-4-6",
+    "ANTHROPIC_VERSION": "2023-06-01"
+  }
+}
