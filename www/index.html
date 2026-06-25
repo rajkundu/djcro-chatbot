@@ -247,7 +247,7 @@ function buildContext(question) {
     pool = hits.length >= 3 ? hits.slice(0,15) : scored.slice(0,15).map(x=>x.r);
   }
 
-  const lines = pool.map(r=>`${r.date} | ${r.topic} | ${r.authors.join(", ")} | ${r.title} | Abstract: ${r.abstract}`).join("\n");
+  const lines = pool.map(r=>`${r.date} | ${r.topic} | ${r.authors.join(", ")} | ${r.title} | PDF URL: ${r.pdfURL} | Abstract: ${r.abstract}`).join("\n");
   const note = pool.length < KB.length ? ` (top ${pool.length} of ${KB.length} by relevance)` : ` (all ${KB.length})`;
   return `DJCRO ${KB.length} reports\nTOPICS: ${topicLine}\nAUTHORS: ${authorLine}\nARTICLES${note}:\n${lines}`;
 }
@@ -412,6 +412,9 @@ async function loadDatabase() {
         const dateEl = dc.getElementsByTagName("dc:date")[0];
         const date = dateEl ? dateEl.textContent.trim() : "Unknown Date";
 
+        const relationEl = dc.getElementsByTagName("dc:relation")[0];
+        const pdfURL = relationEl ? relationEl.textContent.trim() : "";
+
         // Assign Topic precisely from the <setSpec> academic tags instead of <dc:subject>
         let topic = "Other";
         const headerEl = records[i].getElementsByTagName("header")[0];
@@ -456,7 +459,7 @@ async function loadDatabase() {
         const descEl = dc.getElementsByTagName("dc:description")[0];
         const abstract = descEl ? descEl.textContent.trim() : "";
 
-        allArticles.push({ id, title, authors, date, topic, volume: volumeDisplay, season, volNum, doi, abstract });
+        allArticles.push({ id, title, authors, date, topic, volume: volumeDisplay, season, volNum, doi, abstract, pdfURL });
       }
 
       const tokenEl = xmlDoc.getElementsByTagName("resumptionToken")[0];
