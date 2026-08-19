@@ -138,9 +138,14 @@
       <button class="sug" onclick="qs(this)">Reports on glaucoma?</button>
       <button class="sug" onclick="qs(this)">Which authors worked together most?</button>
     </div>
-    <div id="input-bar">
-      <textarea id="inp" placeholder="Ask about DJCRO case reports…" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
-      <button id="send" onclick="send()">↑</button>
+    <div id="input-container" style="background: var(--bg2); border-top: 1px solid var(--border); flex-shrink: 0;">
+      <div id="input-bar" style="border-top: none; padding-bottom: 6px;">
+        <textarea id="inp" placeholder="Ask about DJCRO case reports…" rows="1" onkeydown="hk(event)" oninput="ar(this)"></textarea>
+        <button id="send" onclick="send()">↑</button>
+      </div>
+      <div style="font-size: 10.5px; color: var(--text2); text-align: center; padding: 0 20px 12px; line-height: 1.4;">
+        For educational purposes only. AI-generated responses may contain errors. Verify information in the cited DJCRO articles. Not intended for diagnosis or treatment. Do not enter protected health information.
+      </div>
     </div>
   </div>
 </div>
